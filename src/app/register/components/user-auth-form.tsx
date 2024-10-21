@@ -39,7 +39,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       localStorage.setItem('libraryUserId', JSON.stringify(data.id));
 
 
-      router.push("/loanBook")
+      router.push("/book")
       
     } catch (error) {
       console.error('Erro ao enviar dados:', error);
@@ -99,9 +99,6 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             />
           </div>
           <Button disabled={isLoading}>
-            {/* {isLoading && (
-              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-            )} */}
             Prosseguir
           </Button>
         </div>

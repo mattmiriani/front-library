@@ -19,8 +19,6 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     event.preventDefault()
     setIsLoading(true)
 
-    console.log("aaa", email)
-
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/email`, {
         method: 'POST',
@@ -32,19 +30,18 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       })
     
       if (!response.ok) {
-        throw new Error('Erro ao enviar os dados');
+        throw new Error('Erro ao enviar os dados')
       }
     
       const data = await response.json();  
-      localStorage.setItem('libraryUserId', JSON.stringify(data));
+      localStorage.setItem('libraryUserId', JSON.stringify(data))
 
-
-      router.push("/loanBook")
+      router.push("/book")
       
     } catch (error) {
-      console.error('Erro ao enviar dados:', error);
+      console.error('Erro ao enviar dados:', error)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }
 
@@ -75,9 +72,6 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             </Label>
           </div>
           <Button disabled={isLoading}>
-            {/* {isLoading && (
-              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-            )} */}
             Prosseguir
           </Button>
         </div>
